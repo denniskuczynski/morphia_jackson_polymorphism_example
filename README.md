@@ -17,7 +17,6 @@ See:
 * [Animal.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/animals/Animal.java)
 * [Lion.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/animals/Lion.java)
 * [Tiger.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/animals/Tiger.java)
-
 * [Habitat.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/habitats/Habitat.java)
 * [Grassland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/habitats/Grassland.java)
 * [Woodland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/habitats/Woodland.java)
@@ -40,7 +39,6 @@ Morphia doesn't need any special annotations, but the Entity annotation must hav
 * [Animal.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/animals/Animal.java)
 * [Lion.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/animals/Lion.java)
 * [Tiger.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/animals/Tiger.java)
-
 * [Habitat.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/habitats/Habitat.java)
 * [Grassland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/habitats/Grassland.java)
 * [Woodland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/habitats/Woodland.java)
@@ -70,7 +68,6 @@ We can leverage the style of Jackson of serialization with a type field discrimi
 * [Animal.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Animal.java)
 * [Lion.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Lion.java)
 * [Tiger.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Tiger.java)
-
 * [Habitat.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/habitats/Habitat.java)
 * [Grassland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/habitats/Grassland.java)
 * [Woodland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/habitats/Woodland.java)
