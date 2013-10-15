@@ -14,13 +14,13 @@ Jackson leverages the JsonTypeInfo annotation to define the discriminators for p
 http://wiki.fasterxml.com/JacksonPolymorphicDeserialization
 
 See:
-[Animal.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/animals/Animal.java)
-[Lion.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/animals/Lion.java)
-[Tiger.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/animals/Tiger.java)
+* [Animal.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/animals/Animal.java)
+* [Lion.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/animals/Lion.java)
+* [Tiger.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/animals/Tiger.java)
 
-[Habitat.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/habitats/Habitat.java)
-[Grassland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/habitats/Grassland.java)
-[Woodland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/habitats/Woodland.java)
+* [Habitat.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/habitats/Habitat.java)
+* [Grassland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/habitats/Grassland.java)
+* [Woodland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/jackson_only/habitats/Woodland.java)
 
 ```
 Example Mapping from Jackson:
@@ -37,13 +37,13 @@ Tiger
 
 Morphia doesn't need any special annotations, but the Entity annotation must have noClassnameStored=false because the classname is used for deserialization.
 
-[Animal.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/animals/Animal.java)
-[Lion.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/animals/Lion.java)
-[Tiger.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/animals/Tiger.java)
+* [Animal.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/animals/Animal.java)
+* [Lion.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/animals/Lion.java)
+* [Tiger.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/animals/Tiger.java)
 
-[Habitat.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/habitats/Habitat.java)
-[Grassland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/habitats/Grassland.java)
-[Woodland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/habitats/Woodland.java)
+* [Habitat.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/habitats/Habitat.java)
+* [Grassland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/habitats/Grassland.java)
+* [Woodland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_only/habitats/Woodland.java)
 
 ```
 Example Mapping from Morphia:
@@ -67,13 +67,13 @@ morphia_jackson_polymorphism.morphia_only.animals.Tiger@40b3f220
 
 We can leverage the style of Jackson of serialization with a type field discriminator by configuring Morphia to use a custom object factory that inspects for Jackson's JsonTypeInfo annotation which defines discriminators. Now classnames are not required in the serialized objects.
 
-[Animal.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Animal.java)
-[Lion.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Lion.java)
-[Tiger.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Tiger.java)
+* [Animal.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Animal.java)
+* [Lion.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Lion.java)
+* [Tiger.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Tiger.java)
 
-[Habitat.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/habitats/Habitat.java)
-[Grassland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/habitats/Grassland.java)
-[Woodland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/habitats/Woodland.java)
+* [Habitat.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/habitats/Habitat.java)
+* [Grassland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/habitats/Grassland.java)
+* [Woodland.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/habitats/Woodland.java)
 
 ```
 Example Mapping from Morphia with Jackson:
