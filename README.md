@@ -65,6 +65,8 @@ morphia_jackson_polymorphism.morphia_only.animals.Tiger@40b3f220
 
 We can leverage the style of Jackson of serialization with a type field discriminator by configuring Morphia to use a custom object factory that inspects for Jackson's JsonTypeInfo annotation which defines discriminators. Now classnames are not required in the serialized objects.
 
+Note that Embedded classes must also have an Entity annotation with noClassnameStored=false to prevent their classname from being serialized.
+
 * [Animal.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Animal.java)
 * [Lion.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Lion.java)
 * [Tiger.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Tiger.java)
