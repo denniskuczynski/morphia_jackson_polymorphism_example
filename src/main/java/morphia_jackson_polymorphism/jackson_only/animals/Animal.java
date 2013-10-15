@@ -17,6 +17,7 @@ import java.util.List;
     @JsonSubTypes.Type(value = Tiger.class, name = "tiger")})
 public abstract class Animal {
 
+    //@JsonProperty not required as JsonTypeInfo will serialize it
     private String type;
 
     @JsonProperty("habitat")

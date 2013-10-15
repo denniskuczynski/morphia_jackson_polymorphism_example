@@ -63,9 +63,15 @@ morphia_jackson_polymorphism.morphia_only.animals.Tiger@40b3f220
 
 ## Customizing Morphia to use Jackson JsonTypeInfo Annotations
 
-We can leverage the style of Jackson of serialization with a type field discriminator by configuring Morphia to use a [custom object factory](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/CustomMorphiaObjectFactory.java) that inspects for Jackson's JsonTypeInfo annotation which defines discriminators. Now classnames are not required in the serialized objects.
+We can leverage the style of Jackson of serialization with a type field discriminator by configuring Morphia to use a [custom object factory](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/CustomMorphiaObjectFactory.java) that inspects for Jackson's JsonTypeInfo annotation which defines discriminators. Now classnames are not required in the serialized objects, which makes the records smaller and lets us rename classes without migrations.
 
 Note that Embedded classes must also have an Entity annotation with noClassnameStored=false to prevent their classname from being serialized.
+
+```java
+Morphia morphia = new Morphia();
+Mapper morphiaMapper = morphia.getMapper();
+morphiaMapper.getOptions().objectFactory = new CustomMorphiaObjectFactory();
+```
 
 * [Animal.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Animal.java)
 * [Lion.java](https://github.com/denniskuczynski/morphia_jackson_polymorphism_example/blob/master/src/main/java/morphia_jackson_polymorphism/morphia_with_jackson/animals/Lion.java)
