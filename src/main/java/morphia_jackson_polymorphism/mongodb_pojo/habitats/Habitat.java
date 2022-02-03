@@ -1,4 +1,4 @@
-package morphia_jackson_polymorphism.morphia_only.habitats;
+package morphia_jackson_polymorphism.mongodb_pojo.habitats;
 
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Property;

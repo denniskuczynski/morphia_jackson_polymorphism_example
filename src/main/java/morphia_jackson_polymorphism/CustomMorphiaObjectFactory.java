@@ -1,10 +1,10 @@
 package morphia_jackson_polymorphism;
 
 import com.mongodb.DBObject;
-import org.mongodb.morphia.mapping.DefaultCreator;
+import dev.morphia.mapping.DefaultCreator;
 
-import org.codehaus.jackson.annotate.JsonTypeInfo;  
-import org.codehaus.jackson.annotate.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;  
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 
 import java.util.HashMap;
 

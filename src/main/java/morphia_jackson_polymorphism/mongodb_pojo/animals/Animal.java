@@ -1,26 +1,23 @@
-package morphia_jackson_polymorphism.morphia_only.animals;
+package morphia_jackson_polymorphism.mongodb_pojo.animals;
 
 import org.bson.types.ObjectId;
 
-import dev.morphia.annotations.Id;
-import dev.morphia.annotations.Entity;
-import dev.morphia.annotations.Property;
-import dev.morphia.annotations.Embedded;
+import org.bson.codecs.pojo.annotations.*;
 
-import morphia_jackson_polymorphism.morphia_only.habitats.*;
+import morphia_jackson_polymorphism.mongodb_pojo.habitats.*;
 
 import java.util.List;
 
-@Entity(value="animals", noClassnameStored=false)
+@BsonDiscriminator
 public abstract class Animal {
 
-    @Id
+    @BsonId
     private ObjectId id;
 
-    @Property("_t")
+    @BsonProperty("_t")
     private String type;
 
-    @Embedded("habitat")
+    @BsonProperty("habitat")
     private List<Habitat> habitats;
 
     protected Animal(final String pName) {

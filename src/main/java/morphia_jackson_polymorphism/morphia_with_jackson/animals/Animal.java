@@ -2,13 +2,13 @@ package morphia_jackson_polymorphism.morphia_with_jackson.animals;
 
 import org.bson.types.ObjectId;
 
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Property;
-import org.mongodb.morphia.annotations.Embedded;
+import dev.morphia.annotations.Id;
+import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Property;
+import dev.morphia.annotations.Embedded;
 
-import org.codehaus.jackson.annotate.JsonTypeInfo;  
-import org.codehaus.jackson.annotate.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;  
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 
 import morphia_jackson_polymorphism.morphia_with_jackson.habitats.*;
 

@@ -1,8 +1,8 @@
 package morphia_jackson_polymorphism.jackson_only.animals;
 
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.annotate.JsonTypeInfo;  
-import org.codehaus.jackson.annotate.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;  
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 
 import morphia_jackson_polymorphism.jackson_only.habitats.*;
 

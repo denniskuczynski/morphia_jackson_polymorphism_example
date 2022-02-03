@@ -7,15 +7,15 @@
   <description>Polymorphic Class Mappings in Jackson (JSON) and Morphia (MongoDB)</description>
   
   <properties>
-     <morphia.version>0.105</morphia.version>
-     <java-driver.version>2.11.3</java-driver.version>
-     <jackson.version>1.9.13</jackson.version>
+     <morphia.version>1.6.1</morphia.version>
+     <java-driver.version>3.12.10</java-driver.version>
+     <jackson.version>2.13.1</jackson.version>
   </properties>
   
   <dependencies>
     <dependency>
-      <groupId>org.mongodb.morphia</groupId>
-      <artifactId>morphia</artifactId>
+      <groupId>dev.morphia.morphia</groupId>
+      <artifactId>core</artifactId>
       <version>${morphia.version}</version>
     </dependency>
 
@@ -26,26 +26,26 @@
     </dependency>
 
     <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-core-asl</artifactId>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
       <version>${jackson.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
       <version>${jackson.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-jaxrs</artifactId>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
       <version>${jackson.version}</version>
     </dependency>
 
     <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-xc</artifactId>
+      <groupId>com.fasterxml.jackson.module</groupId>
+      <artifactId>jackson-module-jaxb-annotations</artifactId>
       <version>${jackson.version}</version>
     </dependency>
   </dependencies>
@@ -56,8 +56,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-            <source>1.7</source>
-            <target>1.7</target>
+            <source>1.11</source>
+            <target>1.11</target>
             <showDeprecation>true</showDeprecation>
             <showWarnings>true</showWarnings>
             <executable>${env.JAVA_HOME}/bin/javac</executable>

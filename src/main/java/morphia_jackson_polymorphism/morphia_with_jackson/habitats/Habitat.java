@@ -1,10 +1,10 @@
 package morphia_jackson_polymorphism.morphia_with_jackson.habitats;
 
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Property;
+import dev.morphia.annotations.Entity;
+import dev.morphia.annotations.Property;
 
-import org.codehaus.jackson.annotate.JsonTypeInfo;  
-import org.codehaus.jackson.annotate.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;  
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 
 @Entity(noClassnameStored=true)
 @JsonTypeInfo(

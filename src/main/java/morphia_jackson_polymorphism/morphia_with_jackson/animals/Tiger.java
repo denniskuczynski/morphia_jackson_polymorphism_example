@@ -1,6 +1,6 @@
 package morphia_jackson_polymorphism.morphia_with_jackson.animals;
 
-import org.mongodb.morphia.annotations.Property;
+import dev.morphia.annotations.Property;
 
 import morphia_jackson_polymorphism.morphia_with_jackson.habitats.*;
 

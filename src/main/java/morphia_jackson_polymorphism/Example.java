@@ -1,15 +1,26 @@
 package morphia_jackson_polymorphism;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.AnnotationIntrospector;
-import org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector;
-import org.codehaus.jackson.map.SerializationConfig;
-import org.codehaus.jackson.map.DeserializationConfig;
-import org.codehaus.jackson.xc.JaxbAnnotationIntrospector;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
+import com.mongodb.MongoClient;
+import dev.morphia.Morphia;
+import dev.morphia.Datastore;
+import com.fasterxml.jackson.databind.MapperFeature;
+import dev.morphia.mapping.Mapper;
+import morphia_jackson_polymorphism.mongodb_pojo.animals.Animal;
 
-import org.mongodb.morphia.Morphia;
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.mapping.Mapper;
+import org.bson.BsonWriter;
+import org.bson.BsonBinaryWriter;
+import org.bson.io.BasicOutputBuffer;
+import org.bson.io.ByteBufferBsonInput;
+import org.bson.io.OutputBuffer;
+import org.bson.codecs.EncoderContext;
+import org.bson.codecs.configuration.CodecProvider;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
+import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
+import static com.mongodb.MongoClientSettings.getDefaultCodecRegistry;
 
 public class Example {
 
@@ -47,7 +58,7 @@ public class Example {
             System.out.println("Tiger");
             System.out.println("---------------------------------");
             System.out.println(morphia1.toDBObject(tiger2));
-            Datastore ds1 = morphia1.createDatastore("morphia_only");
+            Datastore ds1 = morphia1.createDatastore(new MongoClient(), "morphia_only");
             ds1.save(lion2);
             ds1.save(tiger2);
             lion2 = ds1.find(morphia_jackson_polymorphism.morphia_only.animals.Lion.class, "_id", lion2.getId()).get();
@@ -64,7 +75,7 @@ public class Example {
             Morphia morphia2 = new Morphia();
             // Add a hook for a custom object factory
             final Mapper morphiaMapper = morphia2.getMapper();
-            morphiaMapper.getOptions().objectFactory = new CustomMorphiaObjectFactory();
+            morphiaMapper.setOptions(morphiaMapper.getOptions().builder().objectFactory(new CustomMorphiaObjectFactory()).build());
             morphia2.mapPackage("morphia_jackson_polymorphism.morphia_with_jackson");
 
             morphia_jackson_polymorphism.morphia_with_jackson.animals.Lion lion3 =
@@ -81,7 +92,7 @@ public class Example {
             System.out.println("---------------------------------");
             System.out.println(morphia2.toDBObject(tiger3));
 
-            Datastore ds2 = morphia2.createDatastore("morphia_with_jackson");
+            Datastore ds2 = morphia2.createDatastore(new MongoClient(), "morphia_with_jackson");
             ds2.save(lion3);
             ds2.save(tiger3);
             lion3 = ds2.find(morphia_jackson_polymorphism.morphia_with_jackson.animals.Lion.class, "_id", lion3.getId()).get();
@@ -93,6 +104,31 @@ public class Example {
             System.out.println("Tiger (from DB)");
             System.out.println("---------------------------------");
             System.out.println(tiger3);
+
+            morphia_jackson_polymorphism.mongodb_pojo.animals.Lion lion4 =
+                new morphia_jackson_polymorphism.mongodb_pojo.animals.Lion("tan");
+            morphia_jackson_polymorphism.mongodb_pojo.animals.Tiger tiger4 =
+            new morphia_jackson_polymorphism.mongodb_pojo.animals.Tiger(42);
+
+            CodecProvider pojoCodecProvider = PojoCodecProvider.builder()
+              .register("morphia_jackson_polymorphism.mongodb_pojo.animals")
+              .register("morphia_jackson_polymorphism.mongodb_pojo.habitats")
+              .build();
+            CodecRegistry pojoCodecRegistry = fromRegistries(getDefaultCodecRegistry(), fromProviders(pojoCodecProvider));
+            System.out.println("Example Mapping from MongoDB POJO:");
+            System.out.println("---------------------------------");
+            System.out.println("Lion");
+            System.out.println("---------------------------------");
+            OutputBuffer buffer = new BasicOutputBuffer();
+            BsonWriter writer = new BsonBinaryWriter(buffer);
+            pojoCodecRegistry.get(Animal.class).encode(writer, lion4, EncoderContext.builder().build());
+            System.out.println(buffer);
+            System.out.println("Tiger");
+            System.out.println("---------------------------------");
+            buffer = new BasicOutputBuffer();
+            writer = new BsonBinaryWriter(buffer);
+            pojoCodecRegistry.get(Animal.class).encode(writer, tiger4, EncoderContext.builder().build());
+            System.out.println(buffer);
         } catch(Throwable t) {
             System.out.println("Exception in Example");
             t.printStackTrace();
@@ -101,16 +137,12 @@ public class Example {
 
     public static ObjectMapper createMapper() {
         ObjectMapper mapper = new ObjectMapper();
-        AnnotationIntrospector jaxbIntrospector = new JaxbAnnotationIntrospector();
-        AnnotationIntrospector jacksonIntrospector = new JacksonAnnotationIntrospector();
-        AnnotationIntrospector introspector = new AnnotationIntrospector.Pair(jacksonIntrospector, jaxbIntrospector);
-        mapper.setDeserializationConfig(mapper.getDeserializationConfig().withAnnotationIntrospector(introspector).
-            without(DeserializationConfig.Feature.AUTO_DETECT_CREATORS).
-            without(DeserializationConfig.Feature.AUTO_DETECT_FIELDS));
-        mapper.setSerializationConfig(mapper.getSerializationConfig().withAnnotationIntrospector(introspector).
-            without(SerializationConfig.Feature.AUTO_DETECT_GETTERS).
-            without(SerializationConfig.Feature.AUTO_DETECT_IS_GETTERS).
-            without(SerializationConfig.Feature.AUTO_DETECT_FIELDS));
+        mapper.registerModule(new JaxbAnnotationModule());
+        mapper.disable(MapperFeature.AUTO_DETECT_CREATORS).
+          disable(MapperFeature.AUTO_DETECT_FIELDS).
+          disable(MapperFeature.AUTO_DETECT_GETTERS).
+          disable(MapperFeature.AUTO_DETECT_IS_GETTERS).
+          disable(MapperFeature.AUTO_DETECT_FIELDS);
         return mapper;
     }
 }
